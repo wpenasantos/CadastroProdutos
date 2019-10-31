@@ -71,7 +71,7 @@ public class ProdutoDAO {
 
             p.setCodigo(rs.getInt("codigo"));
             p.setNome(rs.getString("nome"));
-            p.setPreco(rs.getInt("preco"));
+            p.setPreco(rs.getFloat("preco"));
 
             p.getEspecificacao().setCodigo(rs.getInt("especificacao"));
             p.getEspecificacao().setFabricante(rs.getString("fabricante"));

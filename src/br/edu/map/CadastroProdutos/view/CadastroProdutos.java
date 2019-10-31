@@ -70,7 +70,7 @@ public class CadastroProdutos {
                             
                             System.out.print("Preço: ");
                             entrada = input.nextLine();
-                            p.setPreco((entrada.equals("") ? p.getPreco() : Integer.parseInt(entrada)));
+                            p.setPreco((entrada.equals("") ? p.getPreco() : Float.parseFloat(entrada)));
                             
                             System.out.print("Fabricante: ");
                             entrada = input.nextLine();
