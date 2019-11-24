@@ -66,13 +66,13 @@ public class Especificacao {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("Especificacao{");
-        sb.append("codigo=").append(codigo)
-                .append(", fabricante='").append(fabricante).append('\'')
-                .append(", cor='").append(cor).append('\'')
-                .append(", sistema='").append(sistema).append('\'')
-                .append(", detalhes='").append(detalhes).append('\'')
-                .append('}');
+        final StringBuilder sb = new StringBuilder(" | ");
+        sb.append(codigo)
+                .append(" | ").append(fabricante)
+                .append(" | ").append(cor)
+                .append(" | ").append(sistema)
+                .append(" | ").append(detalhes)
+                .append(" | ");
         return sb.toString();
     }
 }

@@ -7,18 +7,21 @@ package br.edu.map.CadastroProdutos.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ConnectionFactory {
 
-    private static final String URL = "jdbc:postgresql://localhost:5432/cadastroprodutos";
-    private static final String USUARIO = "postgres";
-    private static final String SENHA = "admin";
-
     public static Connection getConnection(){
-        try{
-            return DriverManager.getConnection(URL, USUARIO, SENHA);
-        }catch(Exception e){
-            System.out.println("Erro: " + e.getMessage());
+        try {
+            return DriverManager.getConnection(
+                    ConfUtil.getConf(ConfUtil.CONF_JDBC_URL), 
+                    ConfUtil.getConf(ConfUtil.CONF_JDBC_USUARIO), 
+                    ConfUtil.getConf(ConfUtil.CONF_JDBC_SENHA));
+            
+        } catch (SQLException ex) {
+            System.out.println("Erro: " + ex.getMessage());
             return null;
         }
     }

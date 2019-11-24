@@ -8,10 +8,10 @@ package br.edu.map.CadastroProdutos.model;
 public class Produto {
     private int codigo;
     private String nome;
-    private float preco;
+    private double preco;
     private Especificacao especificacao;
 
-    public Produto(int codigo, String nome, float preco, Especificacao especificacao) {
+    public Produto(int codigo, String nome, double preco, Especificacao especificacao) {
         this.codigo = codigo;
         this.nome = nome;
         this.preco = preco;
@@ -19,7 +19,7 @@ public class Produto {
     }
 
     public Produto() {
-
+        especificacao = new Especificacao();
     }
 
     public int getCodigo() {
@@ -38,11 +38,11 @@ public class Produto {
         this.nome = nome;
     }
 
-    public float getPreco() {
+    public double getPreco() {
         return preco;
     }
 
-    public void setPreco(float preco) {
+    public void setPreco(double preco) {
         this.preco = preco;
     }
 
@@ -56,12 +56,11 @@ public class Produto {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("Produto{");
-        sb.append("codigo=").append(codigo)
-                .append(", nome='").append(nome).append('\'')
-                .append(", preco=").append(preco)
-                .append(", especificacao=").append(especificacao)
-                .append('}');
+        final StringBuilder sb = new StringBuilder();
+        sb.append(" | ").append(codigo)
+                .append(" | ").append(nome)
+                .append(" | ").append(preco)
+                .append(" | ").append(especificacao);
         return sb.toString();
     }
 }
