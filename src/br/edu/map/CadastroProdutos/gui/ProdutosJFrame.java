@@ -7,7 +7,7 @@ package br.edu.map.CadastroProdutos.gui;
 
 import br.edu.map.CadastroProdutos.dao.ProdutoDAO;
 import br.edu.map.CadastroProdutos.model.Produto;
-import br.edu.map.CadastroProdutos.util.DateUtil;
+//import br.edu.map.CadastroProdutos.util.DateUtil;
 import br.edu.map.CadastroProdutos.util.MensagensUtil;
 import br.edu.map.CadastroProdutos.util.RelatorioManager;
 import java.util.List;
@@ -43,6 +43,7 @@ public class ProdutosJFrame extends javax.swing.JFrame {
         initComponents();
         preencherTabela(null);
         atualizarStrings();
+        this.setLocationRelativeTo(null);
     }
     
     private void atualizarStrings(){
@@ -308,7 +309,9 @@ public class ProdutosJFrame extends javax.swing.JFrame {
             List<Produto> produtos = produtoDAO.buscar(busca);
 
             preencherTabela(produtos);
-
+            
+            produtoSelecionado = null;
+            
         } catch (Exception ex) {
             ex.printStackTrace();
             JOptionPane.showMessageDialog(this, MensagensUtil.getMensagem(MensagensUtil.MSG_ERRO_SELECIONAR));
@@ -386,7 +389,7 @@ public class ProdutosJFrame extends javax.swing.JFrame {
         try {
             // TODO add your handling code here:
             JasperPrint relatorio = RelatorioManager.gerarRelatorioProdutos(dao.listar());
-            String titrel = "Relatório";
+            //String titrel = "Relatório";
             JFrame frame = new JFrame();
             frame.setSize(1200, 800);
             JRViewer viewer = new JRViewer(relatorio);
@@ -402,7 +405,7 @@ public class ProdutosJFrame extends javax.swing.JFrame {
         try {
             // TODO add your handling code here:
             // Falta realizar o tratamento de erro adequado, mas o objetivo já foi atingido
-            String titrel = "Relatório de Produtos por Preço";
+            // String titrel = "Relatório de Produtos por Preço";
             Double preco = Double.parseDouble(JOptionPane.showInputDialog(null, MensagensUtil.getMensagem(MensagensUtil.MSG_RELATORIO_PRECO_REFERENCIA)));
             JasperPrint relatorio = RelatorioManager.gerarRelatorioProdutos(dao.listar(preco));
             JFrame frame = new JFrame();

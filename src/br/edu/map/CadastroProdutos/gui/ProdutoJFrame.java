@@ -40,6 +40,7 @@ public class ProdutoJFrame extends javax.swing.JFrame {
         initComponents();
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         preencherCampos();
+        this.setLocationRelativeTo(null);
     }
 
     private void preencherCampos() {
