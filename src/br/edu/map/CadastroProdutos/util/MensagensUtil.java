@@ -50,8 +50,10 @@ public class MensagensUtil {
     public static final String MENU_IDIOMA_ES_ES = "menu.idioma.es.es";
     public static final String MENU_RELATORIO = "menu.relatorio";
     public static final String MENU_RELATORIO_LISTA_PRODUTO = "menu.relatorio.lista.produto";
-    public static final String MENU_RELATORIO_LISTA_PRODUTO_PRECO = "menu.relatorio.lista.produto.preco";
-    public static final String MSG_RELATORIO_PRECO_REFERENCIA = "msg.relatorio.preco.referencia";
+    public static final String MENU_RELATORIO_LISTA_PRODUTO_PRECO_MAIOR = "menu.relatorio.lista.produto.preco.maior";
+    public static final String MENU_RELATORIO_LISTA_PRODUTO_PRECO_MENOR = "menu.relatorio.lista.produto.preco.menor";
+    public static final String MSG_RELATORIO_PRECO_REFERENCIA_MAIOR = "msg.relatorio.preco.referencia.maior";
+    public static final String MSG_RELATORIO_PRECO_REFERENCIA_MENOR = "msg.relatorio.preco.referencia.menor";
     
     
     public static String getMensagem(String key){

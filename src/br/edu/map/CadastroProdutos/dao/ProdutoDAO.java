@@ -88,8 +88,21 @@ public class ProdutoDAO {
         return produtos;
     }
     
-    public List<Produto> listar(Double preco) throws Exception {
-        sql = "select p.*, e.* from produtos p, especificacoes e where p.especificacao = e.codigo and p.preco > " + preco;
+    public List<Produto> listar(Double preco, int ref) throws Exception {
+        switch (ref) {
+            case 1:
+                sql = "select p.*, e.* from produtos p, especificacoes e where p.especificacao = e.codigo and p.preco > " + preco;
+                break;
+            case 0:
+                sql = "select p.*, e.* from produtos p, especificacoes e where p.especificacao = e.codigo and p.preco = " + preco;
+                break;
+            case -1:
+                sql = "select p.*, e.* from produtos p, especificacoes e where p.especificacao = e.codigo and p.preco < " + preco;
+                break;
+            default:
+                sql = "select p.*, e.* from produtos p, especificacoes e where p.especificacao = e.codigo and p.preco > " + preco;
+                break;
+        }
         
         con = ConnectionFactory.getConnection();
         st = con.prepareStatement(sql);

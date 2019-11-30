@@ -60,7 +60,8 @@ public class ProdutosJFrame extends javax.swing.JFrame {
         itemEs_ES.setText(MensagensUtil.getMensagem(MensagensUtil.MENU_IDIOMA_ES_ES));
         jMenu2.setText(MensagensUtil.getMensagem(MensagensUtil.MENU_RELATORIO));
         menuItemListaProdutos.setText(MensagensUtil.getMensagem(MensagensUtil.MENU_RELATORIO_LISTA_PRODUTO));
-        menuItemListaProdutosPorPreco.setText(MensagensUtil.getMensagem(MensagensUtil.MENU_RELATORIO_LISTA_PRODUTO_PRECO));
+        menuItemListaProdutosPorPreco.setText(MensagensUtil.getMensagem(MensagensUtil.MENU_RELATORIO_LISTA_PRODUTO_PRECO_MAIOR));
+        menuItemListaProdutosPorPrecoMenor.setText(MensagensUtil.getMensagem(MensagensUtil.MENU_RELATORIO_LISTA_PRODUTO_PRECO_MENOR));
         preencherTabela(null);
     }
         
@@ -125,6 +126,7 @@ public class ProdutosJFrame extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         menuItemListaProdutos = new javax.swing.JMenuItem();
         menuItemListaProdutosPorPreco = new javax.swing.JMenuItem();
+        menuItemListaProdutosPorPrecoMenor = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         itemPt_BR = new javax.swing.JMenuItem();
         itemEn_US = new javax.swing.JMenuItem();
@@ -197,6 +199,14 @@ public class ProdutosJFrame extends javax.swing.JFrame {
             }
         });
         jMenu2.add(menuItemListaProdutosPorPreco);
+
+        menuItemListaProdutosPorPrecoMenor.setText("Lista de Produtos por preço");
+        menuItemListaProdutosPorPrecoMenor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemListaProdutosPorPrecoMenorActionPerformed(evt);
+            }
+        });
+        jMenu2.add(menuItemListaProdutosPorPrecoMenor);
 
         menuIdioma.add(jMenu2);
 
@@ -404,10 +414,8 @@ public class ProdutosJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
             // TODO add your handling code here:
-            // Falta realizar o tratamento de erro adequado, mas o objetivo já foi atingido
-            // String titrel = "Relatório de Produtos por Preço";
-            Double preco = Double.parseDouble(JOptionPane.showInputDialog(null, MensagensUtil.getMensagem(MensagensUtil.MSG_RELATORIO_PRECO_REFERENCIA)));
-            JasperPrint relatorio = RelatorioManager.gerarRelatorioProdutos(dao.listar(preco));
+            Double preco = Double.parseDouble(JOptionPane.showInputDialog(null, MensagensUtil.getMensagem(MensagensUtil.MSG_RELATORIO_PRECO_REFERENCIA_MAIOR)));
+            JasperPrint relatorio = RelatorioManager.gerarRelatorioProdutos(dao.listar(preco,1));
             JFrame frame = new JFrame();
             frame.setSize(1200, 800);
             JRViewer viewer = new JRViewer(relatorio);
@@ -417,6 +425,22 @@ public class ProdutosJFrame extends javax.swing.JFrame {
             Logger.getLogger(ProdutosJFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_menuItemListaProdutosPorPrecoActionPerformed
+
+    private void menuItemListaProdutosPorPrecoMenorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemListaProdutosPorPrecoMenorActionPerformed
+        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            Double preco = Double.parseDouble(JOptionPane.showInputDialog(null, MensagensUtil.getMensagem(MensagensUtil.MSG_RELATORIO_PRECO_REFERENCIA_MENOR)));
+            JasperPrint relatorio = RelatorioManager.gerarRelatorioProdutos(dao.listar(preco,-1));
+            JFrame frame = new JFrame();
+            frame.setSize(1200, 800);
+            JRViewer viewer = new JRViewer(relatorio);
+            frame.add(viewer);
+            frame.setVisible(true);
+        } catch (Exception ex) {
+            Logger.getLogger(ProdutosJFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_menuItemListaProdutosPorPrecoMenorActionPerformed
 
     
         
@@ -473,6 +497,7 @@ public class ProdutosJFrame extends javax.swing.JFrame {
     private javax.swing.JMenuBar menuIdioma;
     private javax.swing.JMenuItem menuItemListaProdutos;
     private javax.swing.JMenuItem menuItemListaProdutosPorPreco;
+    private javax.swing.JMenuItem menuItemListaProdutosPorPrecoMenor;
     private javax.swing.JTable tableProdutos;
     private javax.swing.JTextField textBusca;
     // End of variables declaration//GEN-END:variables
